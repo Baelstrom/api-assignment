@@ -35,6 +35,9 @@ module.exports.routes = {
   'GET /account/profile':    { action: 'account/view-edit-profile' },
 
 
+  'GET /project':    { action: 'project/view-projects' },
+
+
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
