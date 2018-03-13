@@ -144,7 +144,14 @@ email status until they click the link in the confirmation email.`
     projects: {
       collection: 'project',
       via: 'developers'
+    },
+
+    assignedTasks: {
+      collection: 'task',
+      via: 'assignedTo'
     }
+
+
 
   },
 

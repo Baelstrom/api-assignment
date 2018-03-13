@@ -1,5 +1,5 @@
 /**
- * Project.js
+ * Task.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,44 +12,48 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+
     name: {
       type: 'string',
       required: true,
-      unique: true,
       maxLength: 200,
-      example: 'Avara'
+      example: 'Make X Component Responsive'
     },
 
-    clientName: {
+    description: {
       type: 'string',
-      required: true,
-      unique: true,
-      maxLength: 200,
-      example: 'Mocha Industries'
+      maxLength: 300,
+      example: 'Component does not render properly on mobile devices'
     },
 
-    // The two attrbiutes commmented out :
-    // Are not yet required because it's not asked for in the assignment itself.
-    // Just more work if I feel like I can spare the time
+    workHours: {
+      type: 'number',
+      defaultsTo: 0,
+      example: '4'
+    },
 
-    // expectedHours: {
-    //   type: 'number',
-    //   defaultsTo: 0,
-    //   example: '120'
-    // },
-    //
-    // actualHours: {
-    //   type: 'number',
-    //   defaultsTo: 0,
-    //   example: '121'
-    // },
+    overtimeHours: {
+      type: 'number',
+      defaultsTo: 0,
+      example: '2'
+    },
 
+    // eventually it'd be pretty cool if each task had a log of what was done on it.
+    // could be tracked if status had it's own table and was referenced in a taskHistory collection maybe
     status: {
       type: 'string',
-      required: true,
-      unique: true,
-      maxLength: 200,
-      example: 'Avara'
+      defaultsTo: 'backlog',
+      isIn: [
+        'backlog',
+        'active',
+        'work in progress',
+        'pending review',
+        'approved',
+        'pending UAT',
+        'UAT passed',
+        'pending deployment',
+        'done'],
+      example: 'work in progress',
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -61,16 +65,15 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    developers: {
-      collection: 'user',
-      via: 'projects'
+    project: {
+      model: 'project',
+      unique: true
     },
 
-    tasks: {
-      collection: 'task',
-      via: 'project'
+    assignedTo: {
+      model: 'user',
+      unique: true
     }
-
   },
 
 };
