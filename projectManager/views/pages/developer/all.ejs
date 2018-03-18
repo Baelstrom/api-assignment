@@ -1,0 +1,15 @@
+<div>
+  <% sails.log ('this is inside developer/all')%>
+  <% sails.log ('the user object is',users)%>
+  <% sails.log ('the local object is')%>
+  <% sails.log (users)%>
+  <%
+    users.forEach( user => {
+      %>
+      <%- user.fullName %>
+      <%
+    })
+  %>
+  hello world
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
