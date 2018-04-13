@@ -3,6 +3,33 @@
   padding-bottom: 75px;
 }
 
+@generic-width: 95%;
+
+// TASK: Need to create mixins for text-sizes / stylings
+
+
+// MIXINS
+.text-style-header{
+  color: @dark-grey;
+  font-size: 2.5vh;
+  font-weight: bold;
+  padding-top: 1.5vh;
+}
+
+.drop-shadow-floater{
+  box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    &:hover {
+    box-shadow: 0 6px 6px rgba(0,0,0,0.18), 0 10px 10px rgba(0,0,0,0.19);
+    }
+}
+
+.rounded {
+  border-radius: 15px;
+}
+
+
+// END OF MIXINS
 
 
 .my-container {
@@ -17,7 +44,7 @@
 .my-content {
   display: flex;
   flex-direction: column;
-  width: 95%;
+  width: @generic-width;
   height: 100%;
 }
 
@@ -35,6 +62,7 @@
 }
 
 .add-new-x {
+  .rounded;
   border-style: dashed;
   border-color: @medium-grey;
   border-width: 3px;
@@ -44,6 +72,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 2vh;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
   .add-new-x__text {
     font-size: 2vh;
@@ -58,4 +87,75 @@
     color: @yellow;
   }
 
+  &:hover {
+  background-color:white;
+  cursor: pointer;
+  // .bob()
+  }
+}
+
+// container for the task-list
+.task-list {
+  // individual item in a task-list
+  display:flex;
+  width: @generic-width;
+  flex-direction: column;
+
+}
+
+
+
+  // the task status header
+  .task-list__header {
+    .text-style-header;
+  }
+
+  // the whole task
+.task-list__item {
+  .rounded;
+  .drop-shadow-floater;
+  margin-top: 1%;
+  background-color: @white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+// style of the project / task ID to the left
+
+.task-list__item__id {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:8%;
+  background-color:@medium-grey;
+  border-radius: 15px 0px 0px 15px;
+
+  .task-list__item__pid {
+
+  }
+  .task-list__item__tid {
+
+  }
+}
+
+// text in the middle
+.task-list__item__text {
+  display: flex;
+  align-items: center;
+}
+
+
+// style of project / task edit button to the right
+.task-list__item__button-edit{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px 15px 15px 0px;
+  background-color: @yellow;
+  width:3.5%;
+}
+
+.task-list__item--disabled {
+  filter: grayscale(100%)!important;
 }
