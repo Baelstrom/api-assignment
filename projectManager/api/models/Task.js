@@ -44,11 +44,12 @@ module.exports = {
       type: 'string',
       defaultsTo: 'backlog',
       isIn: [
+        'archived',
         'backlog',
         'active',
         'work in progress',
         'pending review',
-        'approved',
+        'reviewed',
         'pending UAT',
         'UAT passed',
         'pending deployment',

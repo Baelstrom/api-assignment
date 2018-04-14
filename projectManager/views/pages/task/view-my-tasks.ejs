@@ -1,0 +1,225 @@
+
+  <div class="my-container">
+    <div class="my-content">
+
+      <div id="date-today">
+        Tuesday, 13th October 2018
+      </div>
+
+      <div class="heading">
+        Today's Tasks
+      </div>
+      <!-- start of add-new-x component -->
+      <div class="add-new-x">
+        <div class="add-new-x__text">
+          Write down some new tasks~!
+        </div>
+        <div class="add-new-x__plus-button">
+          +
+        </div>
+      </div>
+      <!-- end of add-new-x component -->
+
+      <!-- start of task-list -->
+      <div class="task-list">
+
+        <div class="task-list__header"> Active </div>
+
+        <!-- start of task-list__item -->
+        <div class="task-list__item">
+
+          <div class="task-list__item__id ">
+            <div class="task-list__item__pid"> AVARA </div>
+            <div class="task-list__item__tid"> #02 </div>
+          </div>
+
+          <div class="task-list__item__text">
+            Do the thing
+          </div>
+
+          <div class="task-list__item__button-edit">
+            <img src="/images/icons/icon-edit-white.png" alt="edit">
+          </div>
+
+        </div>
+        <!-- end of task-list__item -->
+
+        <!-- start of task-list__item -->
+        <div class="task-list__item task-list__item--disabled">
+
+          <div class="task-list__item__id ">
+            <div class="task-list__item__pid"> AVARA </div>
+            <div class="task-list__item__tid"> #02 </div>
+          </div>
+
+          <div class="task-list__item__text">
+            Do the thing
+          </div>
+
+          <div class="task-list__item__button-edit">
+            <img src="/images/icons/icon-edit-white.png" alt="edit">
+          </div>
+
+        </div>
+
+
+
+
+        <!-- BEGIN Edit Project Details -->
+        <div class="project-details">
+          <div class="ui h3">Edit Task </div>
+          <form class="ui form">
+              <div class="field">
+                <label>Task Name</label>
+                <input type="text" name="name" placeholder="Enter a task name">
+              </div>
+              <div class="field">
+                <label>Description</label>
+                <textarea name="description" placeholder="You can write a description here" rows="2"></textarea>
+              </div>
+              <div class="field">
+                <label>Work Hours</label>
+                <input type="number" name="description" placeholder="Note down hours worked">
+              </div>
+              <div class="field">
+                <label>Overtime Hours</label>
+                <input type="number" name="description" placeholder="Clock in some overtime">
+              </div>
+              <div class="field">
+                <label>Client Name</label>
+                <input type="text" name="description" placeholder="Client Name">
+              </div>
+            <label>Status</label>
+            <div class="ui fluid search selection dropdown">
+              <input type="hidden" name="status">
+              <i class="dropdown icon"></i>
+              <div class="default text">Select a Status</div>
+              <div class="menu">
+                <div class="item" data-value="archived">Archived</div>
+                <div class="item" data-value="backlog">Backlog</div>
+                <div class="item" data-value="active">Active</div>
+                <div class="item" data-value="work in progress">Work in progress</div>
+                <div class="item" data-value="pending review">Pending review</div>
+                <div class="item" data-value="reviewed">Reviewed</div>
+                <div class="item" data-value="pending UAT">Pending UAT</div>
+                <div class="item" data-value="UAT passed">UAT passed</div>
+                <div class="item" data-value="pending deployment">Pending deploynent</div>
+                <div class="item" data-value="done">Done</div>
+              </div>
+            </div>
+            <label class="form-manager">Project</label>
+            <div class="ui fluid search selection dropdown">
+              <input type="hidden" name="manager">
+              <i class="dropdown icon"></i>
+              <div class="default text">Select a Project</div>
+              <div class="menu">
+                <div class="item" data-value="0">Avara</div>
+                <div class="item" data-value="1">Aeron</div>
+                <div class="item" data-value="2">Brigitte</div>
+                <div class="item" data-value="3">Volke</div>
+                <div class="item" data-value="4">Bobog</div>
+              </div>
+            </div>
+            <label class="form-manager">Assignee</label>
+            <div class="ui fluid search selection dropdown">
+              <input type="hidden" name="manager">
+              <i class="dropdown icon"></i>
+              <div class="default text">Who do you want to assign to this task?</div>
+              <div class="menu">
+                <div class="item" data-value="0">Marcus Brown Lee</div>
+                <div class="item" data-value="1">Will Smith</div>
+                <div class="item" data-value="2">Bright Hart</div>
+                <div class="item" data-value="3">Torbjorn Volke</div>
+                <div class="item" data-value="4">Reindhart Brave</div>
+              </div>
+            </div>
+            <button class="ui green basic button submitter" type="submit">Save Changes</button>
+            <button class="ui orange basic button" >Archive Task</button>
+            <button class="ui red basic button" >Delete Task</button>
+          </form>
+        </div>
+      </div>
+      <!-- END Edit Project Details -->
+
+
+      <!-- BEGIN Add Project -->
+      <div class="project-details">
+        <div class="ui h3">Create a New Task </div>
+        <form class="ui form">
+            <div class="field">
+              <label>Task Name</label>
+              <input type="text" name="name" placeholder="Enter a task name">
+            </div>
+            <div class="field">
+              <label>Description</label>
+              <textarea name="description" placeholder="You can write a description here" rows="2"></textarea>
+            </div>
+            <div class="field">
+              <label>Work Hours</label>
+              <input type="number" name="description" placeholder="Note down hours worked">
+            </div>
+            <div class="field">
+              <label>Overtime Hours</label>
+              <input type="number" name="description" placeholder="Clock in some overtime">
+            </div>
+            <div class="field">
+              <label>Client Name</label>
+              <input type="text" name="description" placeholder="Client Name">
+            </div>
+          <label>Status</label>
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="status">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select a Status</div>
+            <div class="menu">
+              <div class="item" data-value="archived">Archived</div>
+              <div class="item" data-value="backlog">Backlog</div>
+              <div class="item" data-value="active">Active</div>
+              <div class="item" data-value="work in progress">Work in progress</div>
+              <div class="item" data-value="pending review">Pending review</div>
+              <div class="item" data-value="reviewed">Reviewed</div>
+              <div class="item" data-value="pending UAT">Pending UAT</div>
+              <div class="item" data-value="UAT passed">UAT passed</div>
+              <div class="item" data-value="pending deployment">Pending deploynent</div>
+              <div class="item" data-value="done">Done</div>
+            </div>
+          </div>
+          <label class="form-manager">Project</label>
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="manager">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select a Project</div>
+            <div class="menu">
+              <div class="item" data-value="0">Avara</div>
+              <div class="item" data-value="1">Aeron</div>
+              <div class="item" data-value="2">Brigitte</div>
+              <div class="item" data-value="3">Volke</div>
+              <div class="item" data-value="4">Bobog</div>
+            </div>
+          </div>
+          <label class="form-manager">Assignee</label>
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="manager">
+            <i class="dropdown icon"></i>
+            <div class="default text">Who do you want to assign to this task?</div>
+            <div class="menu">
+              <div class="item" data-value="0">Marcus Brown Lee</div>
+              <div class="item" data-value="1">Will Smith</div>
+              <div class="item" data-value="2">Bright Hart</div>
+              <div class="item" data-value="3">Torbjorn Volke</div>
+              <div class="item" data-value="4">Reindhart Brave</div>
+            </div>
+          </div>
+          <button class="ui green basic button submitter" type="submit">Create New Task</button>
+        </form>
+      </div>
+      <!-- END Add Project -->
+
+      <!-- end of task-list -->
+
+      <!-- end of content -->
+    </div>
+
+  </div>
+
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
