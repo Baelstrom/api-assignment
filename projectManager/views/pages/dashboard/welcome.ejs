@@ -6,11 +6,9 @@
         Tuesday, 13th October 2018
       </div>
 
-
       <div class="heading">
         Today's Tasks
       </div>
-
       <!-- start of add-new-x component -->
       <div class="add-new-x">
         <div class="add-new-x__text">
@@ -124,7 +122,7 @@
 
 
           <!-- BEGIN table for project employees -->
-          <table class="ui selectable table">
+          <table class="ui selectable sortable table">
             <thead>
               <tr>
                 <th>Developer</th>
@@ -158,9 +156,9 @@
         </div>
         <!-- END of project container -->
 
+        <!-- BEGIN Edit Project Details -->
         <div class="project-details">
           <div class="ui h3">Edit Project Details </div>
-          <!-- <h2> Edit Project Details </h2> -->
           <form class="ui form">
               <div class="field">
                 <label>Project Name</label>
@@ -196,10 +194,58 @@
                 <div class="item" data-value="4">Reindhart Brave</div>
               </div>
             </div>
-            <button class="ui button submitter" type="submit">Submit</button>
+            <button class="ui green basic button submitter" type="submit">Save Changes</button>
+            <button class="ui orange basic button" >Archive Project</button>
+            <button class="ui red basic button" >Delete Project</button>
           </form>
         </div>
       </div>
+      <!-- END Edit Project Details -->
+
+
+      <!-- BEGIN Add Project -->
+      <div class="project-details">
+        <div class="ui h3">Add New Project </div>
+        <form class="ui form">
+            <div class="field">
+              <label>Project Name</label>
+              <input type="text" name="project-name" placeholder="Project Name">
+            </div>
+            <div class="field">
+              <label>Client Name</label>
+              <input type="text" name="client-name" placeholder="Client Name">
+            </div>
+          <label>Status</label>
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="status">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select Status</div>
+            <div class="menu">
+              <div class="item" data-value="0">Requirements Gathering</div>
+              <div class="item" data-value="1">Planning</div>
+              <div class="item" data-value="2">Sprinting</div>
+              <div class="item" data-value="3">Completed</div>
+              <div class="item" data-value="4">Discontinued</div>
+            </div>
+          </div>
+          <label class="form-manager">Manager</label>
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="manager">
+            <i class="dropdown icon"></i>
+            <div class="default text">Manager</div>
+            <div class="menu">
+              <div class="item" data-value="0">Marcus Brown Lee</div>
+              <div class="item" data-value="1">Will Smith</div>
+              <div class="item" data-value="2">Bright Hart</div>
+              <div class="item" data-value="3">Torbjorn Volke</div>
+              <div class="item" data-value="4">Reindhart Brave</div>
+            </div>
+          </div>
+          <button class="ui green basic button submitter" type="submit">Create New Project</button>
+        </form>
+      </div>
+      <!-- END Add Project -->
+
       <!-- end of task-list -->
       <!-- <form class="ui form">
 
