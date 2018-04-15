@@ -1,0 +1,16 @@
+<label class="form-manager">Manager</label>
+<div class="ui fluid search selection dropdown">
+  <input type="hidden" name="manager">
+  <i class="dropdown icon"></i>
+  <div class="default text">Manager</div>
+  <div class="menu">
+
+    <%# loop through managers add them to the selection list %>
+    <% if(managers) { %>
+        <%  managers.forEach( manager => { %>
+               <div class="item" data-value="<%=manager.id %>"> <%=manager.fullName %></div>
+        <%  }) %>
+      <% } %>
+
+  </div>
+</div>

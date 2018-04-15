@@ -9,6 +9,11 @@ module.exports = {
 
   exits: {
 
+    err: {
+      responseType: 'badRequest',
+      description: 'something went wrong~ please try again!'
+    },
+
     success: {
       viewTemplatePath: 'pages/project/view-projects'
     }
@@ -16,10 +21,21 @@ module.exports = {
   },
 
 
-  fn: function (inputs, exits) {
+  fn: async function (inputs, exits) {
 
+    let managers = await User.find({
+      where: {isManager: 1}
+    })
+    .intercept((err)=>{
+       err.message = 'Uh oh: '+err.message;
+       return err;
+    });
+
+    sails.log('managers are :',managers)
     // Respond with view.
-    return exits.success();
+    return exits.success({
+      managers: managers,
+    });
 
   }
 

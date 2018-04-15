@@ -71,6 +71,7 @@ var jsFilesToInject = [
   'dependencies/jquery.min.js',
   'dependencies/vue.js',
   'dependencies/bootstrap-4/popper.js',
+  'dependencies/parasails.js',
   'dependencies/**/*.js',
   'dependencies/semantic.min.js',
 
