@@ -75,6 +75,10 @@ module.exports = {
     tasks: {
       collection: 'task',
       via: 'project'
+    },
+
+    managedBy: {
+      model: 'user',
     }
 
   },

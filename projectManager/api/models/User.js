@@ -149,7 +149,12 @@ email status until they click the link in the confirmation email.`
     assignedTasks: {
       collection: 'task',
       via: 'assignedTo'
-    }
+    },
+
+    manages: {
+      collection: 'project',
+      via: 'managedBy'
+    },
 
 
 
