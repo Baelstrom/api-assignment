@@ -1,6 +1,10 @@
 <label>Status</label>
 <div class="ui fluid search selection dropdown">
-  <input type="hidden" name="status">
+  <% if (selectedStatus) { %>
+    <input type="hidden" name="status" value="<%= selectedStatus %>">
+  <% } else { %>
+      <input type="hidden" name="status">
+  <% } %>
   <i class="dropdown icon"></i>
   <div class="default text">Select Status</div>
   <div class="menu">

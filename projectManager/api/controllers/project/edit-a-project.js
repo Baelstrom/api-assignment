@@ -6,6 +6,30 @@ module.exports = {
 
   description: 'Display "Projects" page.',
 
+  inputs: {
+
+    projectName: {
+      type: 'string',
+      example: 'Avara'
+    },
+
+    clientName: {
+      type: 'string',
+      example: 'Mocha Industries'
+    },
+
+    status: {
+      type: 'string',
+      example: 'Requirements Gathering'
+    },
+
+    manager: {
+      type: 'number',
+      example: 1
+    },
+
+
+  },
 
   exits: {
 
@@ -16,6 +40,10 @@ module.exports = {
 
     success: {
       viewTemplatePath: 'pages/project/edit-project'
+    },
+
+    updated: {
+      responseType: 'redirect',
     }
 
   },
@@ -23,9 +51,8 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    let {params} = this.req
-    sails.log(" FIND ME HERE ",params)
-    if (this.req.method == 'GET') {
+    // if the action recieves a GET request then show the user an EDIT information
+      let { id } = this.req.params
 
       // get managers
       let managers = await User.find({
@@ -34,12 +61,10 @@ module.exports = {
       .intercept((err)=>{
          err.message = 'Uh oh: '+err.message;
          return err;
-      });
-
-      // get managers
-      let projects = await Project.find({
-        status: { '!=' : ['Archived'] }
       })
+
+      // get Project
+      let project = await Project.find(id)
       .populate('managedBy')
       // .populate('developers')
       // .populate('tasks')
@@ -48,17 +73,14 @@ module.exports = {
          return err;
       })
 
+      sails.log(project)
 
       // Respond with view.
       return exits.success({
         managers: managers,
-        projects: projects,
-      });
+        project: project[0],
+      })
 
-    } else if ( this.req.method == 'POST ') {
 
     }
-  }
-
-
-};
+}
