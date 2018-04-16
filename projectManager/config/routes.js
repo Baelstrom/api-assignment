@@ -43,7 +43,8 @@ module.exports.routes = {
   // Basic Creates
   'POST /projects/add':      { action: 'project/add' },
 
-
+  // Basic Edits
+  'GET /projects/edit/:id':           { action: 'project/edit-project' },
 
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗

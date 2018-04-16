@@ -36,7 +36,7 @@ module.exports = {
     sails.log('managers are :',managers)
 
 
-    // get projects
+    // get managers
     let projects = await Project.find({
       status: { '!=' : ['Archived'] }
     })

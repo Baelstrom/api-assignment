@@ -1,3 +1,8 @@
+function createProject () {
+  $('#create-project')
+  .modal('show')
+}
+
 // makes dropdowns work
   jQuery('.ui.search.dropdown')
   .dropdown({

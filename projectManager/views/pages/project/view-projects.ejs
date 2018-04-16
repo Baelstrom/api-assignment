@@ -9,7 +9,7 @@
         Projects
       </div>
       <!-- start of add-new-x component -->
-      <div class="add-new-x">
+      <div onclick="createProject()"class="add-new-x">
         <div class="add-new-x__text">
           Create a new project~!
         </div>
@@ -40,22 +40,33 @@
                   <div class="ui label project-manager spacer italics">
                     Managed By   <%=project.managedBy.fullName %>
                   </div>
+
                   <div class="buttons">
+
                     <div class="btn-add-dev">
-                      <button class="ui basic button yellower">
-                        Add Developer
-                      </button>
+                     <a href="">
+                       <button class="ui basic button yellower">
+                         Add Developer
+                       </button>
+                     </a>
                     </div>
+
                     <div class="btn-add-dev">
-                      <button class="ui basic button yellower">
-                        View Tasks
-                      </button>
+                      <a href="">
+                        <button class="ui basic button yellower">
+                          View Tasks
+                        </button>
+                      </a>
                     </div>
+
                     <div class="btn-edit-project">
-                      <button class="ui basic button yellower">
-                        Edit Project
-                      </button>
+                      <a href="projects/edit/<%= project.id %>">
+                        <button class="ui basic button yellower">
+                          Edit Project
+                        </button>
+                      </a>
                     </div>
+
                   </div>
                 </div>
 
@@ -120,24 +131,26 @@
       <!-- END Edit Project Details -->
 
 
-      <!-- BEGIN Add Project -->
-      <div class="project-details">
-        <div class="ui h3">Add New Project </div>
-        <form class="ui form" action="/projects/add" method="POST">
-            <div class="field">
-              <label>Project Name</label>
-              <input type="text" name="projectName" placeholder="Project Name">
-            </div>
-            <div class="field">
-              <label>Client Name</label>
-              <input type="text" name="clientName" placeholder="Client Name">
-            </div>
-          <%- include('../../components/select-status-project'); %>
-          <%- include('../../components/select-manager', {managers: managers}); %>
-          <button class="ui green basic button submitter" type="submit">Create New Project</button>
-        </form>
+      <div id="create-project"class="ui tiny modal">
+        <div class="content">
+          <div class="project-details">
+            <div class="ui h3">Add New Project </div>
+            <form class="ui form" action="/projects/add" method="POST">
+                <div class="field">
+                  <label>Project Name</label>
+                  <input type="text" name="projectName" placeholder="Project Name">
+                </div>
+                <div class="field">
+                  <label>Client Name</label>
+                  <input type="text" name="clientName" placeholder="Client Name">
+                </div>
+              <%- include('../../components/select-status-project'); %>
+              <%- include('../../components/select-manager', {managers: managers}); %>
+              <button class="ui green basic button submitter" type="submit">Create New Project</button>
+            </form>
+          </div>
+        </div>
       </div>
-      <!-- END Add Project -->
 
       <!-- end of task-list -->
 

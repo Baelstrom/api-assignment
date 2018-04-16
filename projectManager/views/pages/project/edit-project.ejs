@@ -1,0 +1,36 @@
+
+  <div class="my-container">
+    <div class="my-content">
+      <div id="date-today">
+        Tuesday, 13th October 2018
+      </div>
+
+      <div class="heading">
+        Projects
+
+        <!-- BEGIN Edit Project Details -->
+        <div class="project-details">
+          <div class="ui h3">Edit Project Details </div>
+          <form class="ui form">
+              <div class="field">
+                <label>Project Name</label>
+                <input type="text" name="project-name" placeholder="Project Name">
+              </div>
+              <div class="field">
+                <label>Client Name</label>
+                <input type="text" name="client-name" placeholder="Client Name">
+              </div>
+            <%- include('../../components/select-status-project'); %>
+            <%- include('../../components/select-manager', {managers: managers}); %>
+            <button class="ui green basic button submitter" type="submit">Save Changes</button>
+            <button class="ui orange basic button" >Archive Project</button>
+            <button class="ui red basic button" >Delete Project</button>
+          </form>
+        </div>
+      <!-- END Edit Project Details -->
+
+      <!-- end of content -->
+    </div>
+
+  </div>
+  <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

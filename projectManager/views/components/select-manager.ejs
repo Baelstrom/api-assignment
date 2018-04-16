@@ -6,11 +6,11 @@
   <div class="menu">
 
     <%# loop through managers add them to the selection list %>
-    <% if(managers) { %>
-        <%  managers.forEach( manager => { %>
-               <div class="item" data-value="<%=manager.id %>"> <%=manager.fullName %></div>
-        <%  }) %>
-      <% } %>
+    <% if(managers) {
+         managers.forEach( manager => { %>
+            <div class="item" data-value="<%=manager.id %>"> <%=manager.fullName %></div>
+        <%  })
+     } %>
 
   </div>
 </div>
