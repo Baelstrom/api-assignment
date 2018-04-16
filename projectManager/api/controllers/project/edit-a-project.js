@@ -4,32 +4,7 @@ module.exports = {
   friendlyName: 'View projects',
 
 
-  description: 'Display "Projects" page.',
-
-  inputs: {
-
-    projectName: {
-      type: 'string',
-      example: 'Avara'
-    },
-
-    clientName: {
-      type: 'string',
-      example: 'Mocha Industries'
-    },
-
-    status: {
-      type: 'string',
-      example: 'Requirements Gathering'
-    },
-
-    manager: {
-      type: 'number',
-      example: 1
-    },
-
-
-  },
+  description: 'Display "edit project page" with all the relevant data for that project already filled in',
 
   exits: {
 
@@ -41,10 +16,6 @@ module.exports = {
     success: {
       viewTemplatePath: 'pages/project/edit-project'
     },
-
-    updated: {
-      responseType: 'redirect',
-    }
 
   },
 

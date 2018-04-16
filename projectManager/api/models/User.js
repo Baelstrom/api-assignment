@@ -127,8 +127,8 @@ email status until they click the link in the confirmation email.`
       extendedDescription: `There's no restriction on how many extra hours of work an employee can put in per month`,
     },
 
-    employementStatus: {
-      type: 'boolean',
+    status: {
+      type: 'string',
       description: 'Determines whether an employee is still in employment or not. This includes or excludes an employee from the monthly pay calculation.'
     },
 
