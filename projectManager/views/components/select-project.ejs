@@ -1,0 +1,20 @@
+<label class="form-manager">Project</label>
+<div class="ui fluid search selection dropdown">
+  <% if (selectedProject) { %>
+    <input type="hidden" name="project" value="<%= selectedProject %>">
+  <% } else { %>
+      <input type="hidden" name="project">
+  <% } %>
+  <i class="dropdown icon"></i>
+  <div class="default text">Project</div>
+  <div class="menu">
+
+    <%# loop through managers add them to the selection list %>
+    <% if(projects) {
+         projects.forEach( project => { %>
+            <div class="item" data-value="<%=project.id %>"> <%=project.name %></div>
+        <%  })
+     } %>
+
+  </div>
+</div>

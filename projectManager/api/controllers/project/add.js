@@ -26,7 +26,7 @@ module.exports = {
       example: 'Requirements Gathering'
     },
 
-    manager: {
+    managedBy: {
       type: 'number',
       example: 1
     },
@@ -47,14 +47,14 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    let { projectName, clientName, status, manager} = inputs;
+    let { projectName, clientName, status, managedBy} = inputs;
 
     // create Project
     let newRecord = await Project.create(Object.assign({
       name: projectName,
       clientName: clientName,
       status: status,
-      managedBy: manager,
+      managedBy: managedBy,
     }))
     .fetch()
 

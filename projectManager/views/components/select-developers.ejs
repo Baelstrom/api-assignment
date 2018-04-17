@@ -1,0 +1,33 @@
+<label class="form-manager">Developer</label>
+<div class="ui fluid search selection dropdown">
+  <input type="hidden" name="developer">
+  <i class="dropdown icon"></i>
+  <div class="default text">Select a Developer to add to this Project</div>
+  <div class="menu">
+
+    <%# loop through managers add them to the selection list %>
+    <% if(notSelectedDevelopers) { %>
+      <% notSelectedDevelopers.forEach( developer => { %>
+          <div class="item" data-value="<%=developer.id %>"> <%=developer.fullName %></div>
+      <% }) %>
+    <% } %>
+
+
+
+
+  </div>
+
+</div>
+<% if(selectedDevelopers) { %>
+  <% selectedDevelopers.forEach( developer => { %>
+      <form action="">
+        <input type="hidden" name="developer">
+        <button class="ui compact red icon button">
+          <%=developer.fullName %>
+        </button>
+        <button class="ui compact red icon button">
+          Remove
+        </button>
+      </form>
+  <% }) %>
+<% } %>

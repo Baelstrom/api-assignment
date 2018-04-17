@@ -1,0 +1,118 @@
+
+  <div class="my-container">
+    <div class="my-content">
+
+      <%- include('../../components/todaysDate'); %>
+
+      <div class="heading">
+        Today's Tasks
+      </div>
+      <!-- start of add-new-x component -->
+      <div onclick="createTask()"class="add-new-x">
+        <div class="add-new-x__text">
+          Write down some new tasks~!
+        </div>
+        <div class="add-new-x__plus-button">
+          +
+        </div>
+      </div>
+      <!-- end of add-new-x component -->
+
+      <!-- start of task-list -->
+
+      <% let statuses = ['archived', 'backlog', 'active', 'work in progress', 'pending review', 'reviewed',
+       'pending UAT','UAT passed', 'pending deployment', 'done']%>
+
+      <div class="task-list">
+
+        <% statuses.forEach(status => { %>
+              <div class="task-list__header"> <%= status%></div>
+                <% tasks.forEach(task => { %>
+
+                  <% if ( task.status == status) {%>
+                      <div >
+                      <a class="task-list__item" href="/tasks/edit/<%= task.id %>">
+                        <div class="task-list__item__id ">
+                          <div class="task-list__item__pid"> <%= task.project.name %> </div>
+                        </div>
+                        <div class="task-list__item__text">
+                          <%= task.name %> ::
+                          <%= task.description %> ::
+                          Number of hours worked on <%= task.workHours %>  :: 
+                        </div>
+                        <div class="task-list__item__button-edit">
+                          <img src="/images/icons/icon-edit-white.png" alt="edit">
+                        </div>
+                        </a>
+                      </div>
+                  <% }%>
+                <% })%>
+          <% })%>
+
+
+
+        </div>
+          <!-- END List Task Details -->
+
+
+
+      <!-- BEGIN Add Project -->
+
+
+      <div id="create-task"class="ui tiny modal">
+        <div class="content">
+          <div class="project-details">
+            <div class="ui h3">Create a New Task </div>
+            <form class="ui form" action="tasks/add" method="POST">
+                <div class="field">
+                  <label>Task Name</label>
+                  <input type="text" name="name" placeholder="Enter a task name" >
+                </div>
+                <div class="field">
+                  <label>Description</label>
+                  <textarea name="description" placeholder="You can write a description here" rows="2"></textarea>
+                </div>
+                <div class="field">
+                  <label>Work Hours</label>
+                  <input type="number" name="workHours" placeholder="Note down hours worked">
+                </div>
+                <div class="field">
+                  <label>Overtime Hours</label>
+                  <input type="number" name="overtimeHours" placeholder="Clock in some overtime">
+                </div>
+              <label>Status</label>
+              <div class="ui fluid search selection dropdown">
+                <input type="hidden" name="status" >
+                <i class="dropdown icon"></i>
+                <div class="default text">Select a Status</div>
+                <div class="menu">
+                  <div class="item" data-value="archived">Archived</div>
+                  <div class="item" data-value="backlog">Backlog</div>
+                  <div class="item" data-value="active">Active</div>
+                  <div class="item" data-value="work in progress">Work in progress</div>
+                  <div class="item" data-value="pending review">Pending review</div>
+                  <div class="item" data-value="reviewed">Reviewed</div>
+                  <div class="item" data-value="pending UAT">Pending UAT</div>
+                  <div class="item" data-value="UAT passed">UAT passed</div>
+                  <div class="item" data-value="pending deployment">Pending deploynent</div>
+                  <div class="item" data-value="done">Done</div>
+                </div>
+              </div>
+              <%- include('../../components/select-project',{projects:projects,selectedProject:''}); %>
+              <%- include('../../components/select-assignedTo',{developers:developers,selectedDeveloper:''}); %>
+              <button class="ui green basic button submitter" type="submit">Create New Task</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- END Add Project -->
+
+      <!-- end of task-list -->
+    </div>
+
+      <!-- end of content -->
+
+  </div>
+
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

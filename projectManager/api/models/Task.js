@@ -68,12 +68,10 @@ module.exports = {
 
     project: {
       model: 'project',
-      unique: true
     },
 
     assignedTo: {
       model: 'user',
-      unique: true
     }
   },
 

@@ -36,19 +36,27 @@ module.exports.routes = {
 
 
   // Basic Views
-  'GET /tasks':              { action: 'task/view-my-tasks' },
-  'GET /projects':           { action: 'project/view-projects' },
-  'GET /developers':         { action: 'developer/view-developers' },
+  'GET /mytasks':                         { action: 'task/view-my-tasks' },
+  'GET /tasks':                           { action: 'task/view-tasks' },
+  'GET /projects':                        { action: 'project/view-projects' },
+  'GET /developers':                      { action: 'developer/view-developers' },
+  'GET /projects/:id/edit-devs':          { action: 'project/edit-devs' },
 
   // Basic Creates
-  'POST /projects/add':      { action: 'project/add' },
+  'POST /projects/add':                   { action: 'project/add' },
+  'POST /tasks/add':                      { action: 'task/add' },
+  'POST /projects/add-a-dev':             { action: 'project/add-a-dev' },
+  'POST /projects/remove-a-dev':          { action: 'project/remove-a-dev' },
 
   // Basic Edits
-  'GET /projects/edit/:id':           { action: 'project/edit-a-project'  },
-  'POST /projects/edit':           { action: 'project/edit' },
+  'GET /projects/edit/:id':               { action: 'project/edit-a-project'  },
+  'POST /projects/edit':                  { action: 'project/edit' },
 
-  'GET /developers/edit/:id':         { action: 'developer/edit-a-developer' },
-  'POST /developers/edit':         { action: 'developer/edit' },
+  'GET /developers/edit/:id':             { action: 'developer/edit-a-developer' },
+  'POST /developers/edit':                { action: 'developer/edit' },
+
+  'GET /tasks/edit/:id':                  { action: 'task/edit-a-task'  },
+  'POST /tasks/edit':                     { action: 'task/edit' },
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗

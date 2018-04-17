@@ -2,7 +2,10 @@ function createProject () {
   $('#create-project')
   .modal('show')
 }
-
+function createTask() {
+  $('#create-task')
+  .modal('show')
+}
 // makes dropdowns work
   jQuery('.ui.search.dropdown')
   .dropdown({
