@@ -42,7 +42,7 @@ module.exports = {
 
 
     // Respond with view.
-    return exits.success('projects/' + inputs.id +'/edit-devs');
+    return exits.success('/projects/' + inputs.id +'/edit-devs');
 
   }
 
