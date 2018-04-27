@@ -13,20 +13,20 @@
           <form class="ui form" action="/tasks/edit" method="POST">
               <div class="field">
                 <label>Task Name</label>
-                <input type="hidden" name="id" placeholder="Enter a task name" value="<%= task.id %>">
-                <input type="text" name="name" placeholder="Enter a task name" value="<%= task.name %>">
+                <input type="hidden" name="id" placeholder="Enter a task name" value="<%= task.id %>" required>
+                <input type="text" name="name" placeholder="Enter a task name" value="<%= task.name %>" required>
               </div>
               <div class="field">
                 <label>Description</label>
-                <textarea name="description" placeholder="You can write a description here" rows="2"><%= task.description %></textarea>
+                <textarea name="description" placeholder="You can write a description here" rows="2" required ><%= task.description %></textarea>
               </div>
               <div class="field">
                 <label>Work Hours</label>
-                <input type="number" name="workHours" placeholder="Note down hours worked" value="<%= task.workHours %>">
+                <input type="number" name="workHours" placeholder="Note down hours worked" value="<%= task.workHours %>" required>
               </div>
               <div class="field">
                 <label>Overtime Hours</label>
-                <input type="number" name="overtimeHours" placeholder="Clock in some overtime" value="<%= task.overtimeHours %>">
+                <input type="number" name="overtimeHours" placeholder="Clock in some overtime" value="<%= task.overtimeHours %>" required>
               </div>
             <%- include('../../components/select-status-task',{selectedStatus:task.status}); %>
             <%- include('../../components/select-project',{projects:projects,selectedProject:task.project.id}); %>

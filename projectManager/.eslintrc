@@ -42,7 +42,10 @@
     "async": true,
 
     // Models:
-    "User": true
+    "User": true,
+    "Project": true,
+    "Task": true,
+    "Developer": true,
 
     // …and any others.
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

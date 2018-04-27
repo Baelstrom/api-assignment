@@ -29,8 +29,8 @@ module.exports = {
       where: {isManager: 1}
     })
     .intercept((err)=>{
-       err.message = 'Uh oh: '+err.message;
-       return err;
+      err.message = 'Uh oh: '+err.message;
+      return err;
     });
 
 
@@ -39,63 +39,80 @@ module.exports = {
       status: { '!=' : ['Archived'] }
     })
     .populate('managedBy')
-    // .populate('developers')
+    .populate('developers')
     .populate('tasks')
     .intercept((err)=>{
-       err.message = 'Uh oh: '+err.message;
-       return err;
+      err.message = 'Uh oh: '+err.message;
+      return err;
     })
 
+    sails.log('devs are :',projects[0].developers)
     sails.log('tasks are :',projects[0].tasks)
 
-    // okay so now each project has tasks associated with it.
 
-    // what makes the most sense to me is :
-    // for each Developer assigned to a project
-    // Task.find() where assignedTo = devID and project = projectID
-    // let sum = 0; let overtime = 0; totalSum = 0;
-    // for each in Tasks.
-    // let startingValue = tasks[0].createdAt
-    // trim starting value to be only date
-    // foreach in tasks
-    // trim comparing value to be only date
-    // while today
-    //
+    // for each project we have
+    projects.forEach( project => {
 
-    /*
+      // create a var to hold all dev summaries for a project
+      let projectSummary = {}
 
-    let projectSummary = [
-      {
-        developerName: 'Susan',
-        hoursWorked: 150,
-        overtime: 12,
-        totalContribution: 29,
-      },
-      {
-        developerName: 'Tim',
-        hoursWorked: 140,
-        overtime: 2,
-        totalContribution: 24,
-      }
-    ]
+      // set prooject id and create a null array for dev details
+      projectSummary.projectId = project.id
+      projectSummary.developerDetails = []
 
-    For each Developer in a Project
-      Find out what Tasks they've been assigned for that Project sorted by time
-        create sum , overtime, totalSum
-        find out what day the first task was created, set that as relevantDay
-        totalSum = 0
-        For each Task,
-          compare day in date == to relevantDay. if true
-            sum+= hoursWorked
-             if the sum > 8 {
-             overtime= sum-8
-           }
+      // get list of devs on that project
+      let developersOnProject = project.developers
+
+      let totalProjectHoursWorked = 0
+      // get all the dev details through :
+      // for each developer on a project
+      developersOnProject.forEach( developer => {
+        let developerSummary = {}
+        let individualWorkHours = 0
+        let individualOvertimeHours = 0
+
+        // go through the tasks a project has
+        project.tasks.forEach ( task => {
+
+          // if the task is assigned to the developer
+          if(task.assignedTo === developer.id) {
+            // get their work hours
+            individualWorkHours += task.workHours
+            individualOvertimeHours += task.overtimeHours
+            // add their individual work hours to the total project work hours
+            totalProjectHoursWorked += task.workHours + task.overtimeHours
+          }
+
+        })
+
+        // bu the end of the forEach loop above we have all the data ready for one dev
+        // add it to a developerSummary Object
+        developerSummary.id = developer.id
+        developerSummary.fullName = developer.fullName
+        developerSummary.workHours = individualWorkHours
+        developerSummary.overTimeHours = individualOvertimeHours
+
+        // add all details for this one developer into a developerDetails array
+        projectSummary.developerDetails.push(developerSummary)
+
+      }) // end of developers forEach
+
+      // set total project work hours
+      projectSummary.totalProjectHours = totalProjectHoursWorked
 
 
+      // get the contribution per developer by looping through projectSummary.developerDetails
+      projectSummary.developerDetails.forEach( developer => {
+        let {workHours, overTimeHours} = developer // take out variables fpr hours worked
+        let {totalProjectHours} = projectSummary // take out total project hours
+        // taking out the individual vars creats a neater formula to view below
+        developer.contribution = (( workHours + overTimeHours )/totalProjectHours)*100
+      })
+      // add final array to initial project object
+      project.projectSummary = projectSummary
+    }) // end of projects forEach
 
-    */
-
-    
+    sails.log('example projectSummary for index 0 :',projects[0].projectSummary)
 
     // Respond with view.
     return exits.success({

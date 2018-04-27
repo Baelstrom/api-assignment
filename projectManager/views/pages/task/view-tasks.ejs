@@ -27,26 +27,42 @@
 
         <% statuses.forEach(status => { %>
               <div class="task-list__header"> <%= status%></div>
+              <table class="ui sortable celled table">
+              <thead>
+                <tr>
+                  <th>Project</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Work Hours</th>
+                  <th>Overtime Hours</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
                 <% tasks.forEach(task => { %>
 
+
                   <% if ( task.status == status) {%>
-                      <div >
-                      <a class="task-list__item" href="/tasks/edit/<%= task.id %>">
-                        <div class="task-list__item__id ">
-                          <div class="task-list__item__pid"> <%= task.project.name %> </div>
-                        </div>
-                        <div class="task-list__item__text">
-                          <%= task.name %> ::
-                          <%= task.description %> ::
-                          Number of hours worked on <%= task.workHours %>  :: 
-                        </div>
-                        <div class="task-list__item__button-edit">
-                          <img src="/images/icons/icon-edit-white.png" alt="edit">
-                        </div>
-                        </a>
-                      </div>
+
+
+                          <tr>
+                            <td><%= task.project.name %></td>
+                            <td><%= task.name %></td>
+                            <td><%= task.description %></td>
+                            <td><%= task.workHours %></td>
+                            <td><%= task.overtimeHours %></td>
+                            <td class ="edit-butt">
+                              <a href="/tasks/edit/<%= task.id %>">
+                                <img src="/images/icons/icon-edit-grey.png" alt="edit">
+                              </a>
+                            </td>
+                         </tr>
+
+
                   <% }%>
                 <% })%>
+                </tbody>
+              </table>
           <% })%>
 
 

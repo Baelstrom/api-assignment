@@ -38,8 +38,8 @@ module.exports = {
   exits: {
 
     success: {
-      responseType: 'view',
-      viewTemplatePath: 'pages/project/view-one-project'
+      responseType: 'redirect',
+      // viewTemplatePath: 'pages/project/view-one-project'
     }
 
   },
@@ -62,22 +62,11 @@ module.exports = {
     // await User.addToCollection(manager, 'manages')
     // .members([newRecord.id])
 
-    // retrieve new record
-    newRecord = await Project.find({
-      where: {id: newRecord.id},
-    })
-    .populate('managedBy')
-
 
     sails.log('newRecord created~: ', newRecord)
 
     // Respond with view.
-    return exits.success({
-      projectName: projectName,
-      clientName: clientName,
-      status: status,
-      manager: newRecord.managedBy,
-    });
+    return exits.success('/Projects');
 
   }
 

@@ -42,9 +42,9 @@
                   <div class="buttons">
 
                     <div class="btn-add-dev">
-                     <a href="">
+                     <a href="/Projects/<%=project.id %>/edit-devs">
                        <button class="ui basic button yellower">
-                         Add Developer
+                         Add / Remove Devs
                        </button>
                      </a>
                     </div>
@@ -80,24 +80,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>John</td>
-                      <td>3</td>
-                      <td>2</td>
-                      <td>5</td>
-                    </tr>
-                    <tr>
-                      <td>Jamie</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td>5</td>
-                    </tr>
-                    <tr>
-                      <td>Jill</td>
-                      <td>6</td>
-                      <td>4</td>
-                      <td>2</td>
-                    </tr>
+                    <%  project.projectSummary.developerDetails.forEach( developer => { %>
+                      <tr>
+                        <td><%= developer.fullName%></td>
+                        <td><%= developer.workHours%></td>
+                        <td><%= developer.overTimeHours%></td>
+                        <td><%= developer.contribution%></td>
+                      </tr>
+                    <%  }) %>
                   </tbody>
                 </table>
                 <!-- END table for project emploeeys -->
@@ -114,11 +104,11 @@
             <form class="ui form" action="/projects/add" method="POST">
                 <div class="field">
                   <label>Project Name</label>
-                  <input type="text" name="projectName" placeholder="Project Name">
+                  <input type="text" name="projectName" placeholder="Project Name" required>
                 </div>
                 <div class="field">
                   <label>Client Name</label>
-                  <input type="text" name="clientName" placeholder="Client Name">
+                  <input type="text" name="clientName" placeholder="Client Name" required>
                 </div>
               <%- include('../../components/select-status-project', {selectedStatus: ''}) %>
               <%- include('../../components/select-manager', {managers: managers, selectedManager: ''}) %>
