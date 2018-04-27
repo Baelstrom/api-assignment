@@ -58,6 +58,11 @@ module.exports.routes = {
   'GET /tasks/edit/:id':                  { action: 'task/edit-a-task'  },
   'POST /tasks/edit':                     { action: 'task/edit' },
 
+
+  // Basic Archives
+  'POST /projects/archive':                  { action: 'project/archive' },
+  'POST /tasks/archive':                     { action: 'task/archive' },
+
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝

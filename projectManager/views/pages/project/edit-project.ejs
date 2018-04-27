@@ -25,9 +25,14 @@
             <%- include('../../components/select-status-project',{selectedStatus:project.status}); %>
             <%- include('../../components/select-manager', {managers: managers, selectedManager: project.managedBy.fullName}); %>
             <button class="ui green basic button submitter" type="submit">Save Changes</edit>
-            <a href=""><button class="ui orange basic button" >Archive Project</button></a>
-            <a href=""><button class="ui red basic button" >Delete Project</button></a>
           </form>
+          <form action="/projects/archive" method="post">
+            <input type="hidden" name="id" placeholder="Project ID" value="<%= project.id %>">
+            <div class="archive-butt">
+              <button  type="submit" class="ui orange basic button archive-butt" >Archive Project</button>
+            </div>
+          </form>
+
         </div>
       <!-- END Edit Project Details -->
 

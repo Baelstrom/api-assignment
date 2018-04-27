@@ -23,61 +23,61 @@ module.exports = {
   fn: async function (inputs, exits) {
 
     // if the action recieves a GET request then show the user an EDIT information
-      let { id } = this.req.params
+    let { id } = this.req.params
 
-      //get the specific task
-      let task = await Task.find({
-        where: { 'id' : id }
-      })
-      .populate('assignedTo')
-      .populate('project')
+    //get the specific task
+    let task = await Task.find({
+      where: { 'id' : id }
+    })
+    .populate('assignedTo')
+    .populate('project')
 
-      task= task[0]
-
-
-      // NOTE:
-      // because it's a many to one association
-      // .populate() can only be called on the MANY side of the association
-      // SO. That means I need to populate task.project manually as I'm doing below
-      // task.project = await Project.find(task.id)
-      // .intercept((err)=>{
-      //    err.message = 'Uh oh: '+err.message;
-      //    return err;
-      // })
-
-      // get project data
-      let projects = await Project.find({
-        status: {'!=':'archived'}
-      })
-      .populate('managedBy')
-      .intercept((err)=>{
-         err.message = 'Uh oh: '+err.message;
-         return err;
-      })
+    task= task[0]
 
 
-      // get developers data
-      let developers = await User.find({
-        status: {'!=':'archived'}
-      })
-      .intercept((err)=>{
-         err.message = 'Uh oh: '+err.message;
-         return err;
-      })
+    // NOTE:
+    // because it's a many to one association
+    // .populate() can only be called on the MANY side of the association
+    // SO. That means I need to populate task.project manually as I'm doing below
+    // task.project = await Project.find(task.id)
+    // .intercept((err)=>{
+    //    err.message = 'Uh oh: '+err.message;
+    //    return err;
+    // })
 
-      sails.log({
-        developers: developers,
-        projects: projects,
-        task: task,
-      })
-      sails.log('task --> project ',task)
+    // get project data
+    let projects = await Project.find({
+      status: {'!=':'archived'}
+    })
+    .populate('managedBy')
+    .intercept((err)=>{
+      err.message = 'Uh oh: '+err.message;
+      return err;
+    })
 
-      // Respond with view.
-      return exits.success({
-        developers: developers,
-        projects: projects,
-        task: task,
-      })
+
+    // get developers data
+    let developers = await User.find({
+      status: {'!=':'archived'}
+    })
+    .intercept((err)=>{
+      err.message = 'Uh oh: '+err.message;
+      return err;
+    })
+
+    sails.log({
+      developers: developers,
+      projects: projects,
+      task: task,
+    })
+    sails.log('task --> project ',task)
+
+    // Respond with view.
+    return exits.success({
+      developers: developers,
+      projects: projects,
+      task: task,
+    })
 
 
     }

@@ -53,7 +53,6 @@ module.exports = {
     status: {
       type: 'string',
       required: true,
-      unique: true,
       maxLength: 200,
       example: 'Avara'
     },

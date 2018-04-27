@@ -33,8 +33,12 @@
             <%- include('../../components/select-assignedTo',{developers:developers,selectedDeveloper:task.assignedTo.id}); %>
 
             <button class="ui green basic button submitter" type="submit">Save Changes</button>
-            <button class="ui orange basic button" >Archive Task</button>
-            <button class="ui red basic button" >Delete Task</button>
+          </form>
+          <form action="/tasks/archive" method="post">
+            <input type="hidden" name="id" placeholder="Project ID" value="<%= task.id %>">
+            <div class="archive-butt">
+              <button  type="submit" class="ui orange basic button " >Archive Task</button>
+            </div>
           </form>
         </div>
       </div>
