@@ -75,6 +75,15 @@ module.exports.routes = {
   'POST  /api/v1/create-project':                        { action: 'project/create-a-project' },
 
 
+
+  'GET /projects-for-manager/:id':                      { action: 'api/projects-for-manager' },
+  'GET /developer-overtime/:id':                         { action: 'api/developer-overtime' },
+  'DELETE /task/:id':                                    { action: 'api/delete-task' },
+
+
+
+
+
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
