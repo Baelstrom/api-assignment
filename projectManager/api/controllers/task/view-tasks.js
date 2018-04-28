@@ -38,7 +38,8 @@ module.exports = {
 
     // get the task data
     let tasks = await Task.find({
-      status: {'!=':'archived'}
+      status: {'!=':'archived'},
+      assignedTo: this.req.session.userId
     })
     .populate('project')
     .intercept((err)=>{

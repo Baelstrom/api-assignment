@@ -7,8 +7,14 @@ let APICalls = [
     name:'POST /task',
     url:'http:192.168.8.101:1337/task',
     payload: {
-
-    },
+      "name": "Dig a potato",
+      "description": "Take a shovel",
+      "workHours": 2,
+      "overtimeHours": 3,
+      "status": "backlog",
+      "project": 1,
+      "assignedTo": 1
+    }
   },
   {
     // gets projects for manager
@@ -31,7 +37,7 @@ let APICalls = [
     name:'PUT /task/:id',
     url:'http:192.168.8.101:1337/task/:id',
     payload: {
-
+      "name": "Dig a Hole in the ground",
     },
   },
   {
