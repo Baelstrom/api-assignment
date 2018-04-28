@@ -1,0 +1,127 @@
+
+  <div class="my-container">
+    <div class="my-content">
+      <%- include('../../components/todaysDate'); %>
+
+      <div class="heading">
+        Projects
+      </div>
+      <!-- start of add-new-x component -->
+      <div onclick="createProject()"class="add-new-x">
+        <div class="add-new-x__text">
+          Create a new project~!
+        </div>
+        <div class="add-new-x__plus-button">
+          +
+        </div>
+      </div>
+      <!-- end of add-new-x component -->
+
+
+
+        <% if(projects) { %>
+            <%  projects.forEach( project => { %>
+              <div class="project-container">
+                <div class="project__details">
+                  <div class="project-title spacer">
+                    <%=project.name %>
+                  </div>
+                   <div class="for spacer italics">
+                     for
+                   </div>
+                  <div class="ui label project-client spacer italics">
+                    <%=project.clientName %>
+                  </div>
+                  <div class="ui label project-status spacer italics">
+                    <%=project.status %>
+                  </div>
+                  <div class="ui label project-manager spacer italics">
+                    Managed By   <%=project.managedBy.fullName %>
+                  </div>
+
+                  <div class="buttons">
+
+                    <div class="btn-add-dev">
+                     <a href="/Projects/<%=project.id %>/edit-devs">
+                       <button class="ui basic button yellower">
+                         Add / Remove Devs
+                       </button>
+                     </a>
+                    </div>
+
+                    <div class="btn-add-dev">
+                      <a href="">
+                        <button class="ui basic button yellower">
+                          View Tasks
+                        </button>
+                      </a>
+                    </div>
+
+                    <div class="btn-edit-project">
+                      <a href="projects/edit/<%= project.id %>">
+                        <button class="ui basic button yellower">
+                          Edit Project
+                        </button>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <!-- BEGIN table for project employees -->
+                <table class="ui selectable sortable table">
+                  <thead>
+                    <tr>
+                      <th>Developer</th>
+                      <th>Hours</th>
+                      <th>Overtime</th>
+                      <th>Contribution</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%  project.projectSummary.developerDetails.forEach( developer => { %>
+                      <tr>
+                        <td><%= developer.fullName%></td>
+                        <td><%= developer.workHours%></td>
+                        <td><%= developer.overTimeHours%></td>
+                        <td><%= developer.contribution%></td>
+                      </tr>
+                    <%  }) %>
+                  </tbody>
+                </table>
+                <!-- END table for project emploeeys -->
+              </div>
+              <!-- END of project container -->
+            <%  }) %>
+        <% } %>
+
+
+      <div id="create-project"class="ui tiny modal">
+        <div class="content">
+          <div class="project-details">
+            <div class="ui h3">Add New Project </div>
+            <form class="ui form" action="/projects/add" method="POST">
+                <div class="field">
+                  <label>Project Name</label>
+                  <input type="text" name="projectName" placeholder="Project Name" required>
+                </div>
+                <div class="field">
+                  <label>Client Name</label>
+                  <input type="text" name="clientName" placeholder="Client Name" required>
+                </div>
+              <%- include('../../components/select-status-project', {selectedStatus: ''}) %>
+              <%- include('../../components/select-manager', {managers: managers, selectedManager: ''}) %>
+              <button class="ui green basic button submitter" type="submit">Create New Project</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- end of task-list -->
+
+      <!-- end of content -->
+    </div>
+
+  </div>
+  <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

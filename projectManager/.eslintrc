@@ -21,7 +21,9 @@
   // you would visit `http://eslint.org/docs/rules/no-sequences`.  If you're unsure
   // or could use some advice, come by https://sailsjs.com/support.
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+  "plugins": [
+        "ejs"
+    ],
   "env": {
     "node": true
   },
@@ -40,7 +42,10 @@
     "async": true,
 
     // Models:
-    "User": true
+    "User": true,
+    "Project": true,
+    "Task": true,
+    "Developer": true,
 
     // …and any others.
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -84,5 +89,6 @@
     "quotes":                       ["warn", "single", {"avoidEscape":false, "allowTemplateLiterals":true}],
     "semi-spacing":                 ["warn", {"before":false, "after":true}],
   }
+
 
 }

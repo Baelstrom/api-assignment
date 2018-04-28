@@ -35,23 +35,58 @@ module.exports.routes = {
   'GET /account/profile':    { action: 'account/view-edit-profile' },
 
 
-  'GET /project':    { action: 'project/view-projects' },
+  // Basic Views
+  'GET /mytasks':                         { action: 'task/view-my-tasks' },
+  'GET /tasks':                           { action: 'task/view-tasks' },
+  'GET /projects':                        { action: 'project/view-projects' },
+  'GET /developers':                      { action: 'developer/view-developers' },
+  'GET /projects/:id/edit-devs':          { action: 'project/edit-devs' },
 
+  // Basic Creates
+  'POST /projects/add':                   { action: 'project/add' },
+  'POST /tasks/add':                      { action: 'task/add' },
+  'POST /projects/add-a-dev':             { action: 'project/add-a-dev' },
+  'POST /projects/remove-a-dev':          { action: 'project/remove-a-dev' },
+
+  // Basic Edits
+  'GET /projects/edit/:id':               { action: 'project/edit-a-project'  },
+  'POST /projects/edit':                  { action: 'project/edit' },
+
+  'GET /developers/edit/:id':             { action: 'developer/edit-a-developer' },
+  'POST /developers/edit':                { action: 'developer/edit' },
+
+  'GET /tasks/edit/:id':                  { action: 'task/edit-a-task'  },
+  'POST /tasks/edit':                     { action: 'task/edit' },
+
+
+  // Basic Archives
+  'POST /projects/archive':                  { action: 'project/archive' },
+  'POST /tasks/archive':                     { action: 'task/archive' },
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
   // Note that, in this app, these API endpoints may be accessed using the `Cloud.*()` methods
   // from the CloudSDK library.
-  '/api/v1/account/logout':                           { action: 'account/logout' },
-  'PUT   /api/v1/account/update-password':            { action: 'account/update-password' },
-  'PUT   /api/v1/account/update-profile':             { action: 'account/update-profile' },
-  'PUT   /api/v1/account/update-billing-card':        { action: 'account/update-billing-card' },
+  '/api/v1/account/logout':                              { action: 'account/logout' },
+  'PUT   /api/v1/account/update-password':               { action: 'account/update-password' },
+  'PUT   /api/v1/account/update-profile':                { action: 'account/update-profile' },
+  'PUT   /api/v1/account/update-billing-card':           { action: 'account/update-billing-card' },
   'PUT   /api/v1/entrance/login':                        { action: 'entrance/login' },
   'POST  /api/v1/entrance/signup':                       { action: 'entrance/signup' },
   'POST  /api/v1/entrance/send-password-recovery-email': { action: 'entrance/send-password-recovery-email' },
   'POST  /api/v1/entrance/update-password-and-login':    { action: 'entrance/update-password-and-login' },
   'POST  /api/v1/deliver-contact-form-message':          { action: 'deliver-contact-form-message' },
+  'POST  /api/v1/create-project':                        { action: 'project/create-a-project' },
+
+
+
+  'GET /projects-for-manager/:id':                      { action: 'api/projects-for-manager' },
+  'GET /developer-overtime/:id':                         { action: 'api/developer-overtime' },
+  'DELETE /task/:id':                                    { action: 'api/delete-task' },
+
+
+
 
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗

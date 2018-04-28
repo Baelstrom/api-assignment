@@ -1,0 +1,18 @@
+<label>Status</label>
+<div class="ui fluid search selection dropdown">
+  <% if (selectedStatus) { %>
+    <input type="hidden" name="status" value="<%= selectedStatus %>">
+  <% } else { %>
+      <input type="hidden" name="status">
+  <% } %>
+  <i class="dropdown icon"></i>
+  <div class="default text">Select Status</div>
+  <div class="menu">
+    <div class="item" data-value="Requirements Gathering">Requirements Gathering</div>
+    <div class="item" data-value="Planning">Planning</div>
+    <div class="item" data-value="Sprinting">Sprinting</div>
+    <div class="item" data-value="Completed">Completed</div>
+    <div class="item" data-value="Discontinued">Discontinued</div>
+    <div class="item" data-value="Discontinued">Archived</div>
+  </div>
+</div>

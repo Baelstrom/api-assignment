@@ -1,0 +1,52 @@
+
+  <div class="my-container">
+    <div class="my-content">
+      <%- include('../../components/todaysDate'); %>
+
+      <div class="heading">
+        <%= project.name %> -- project id# <%= project.id %>
+      </div>
+
+        <!-- BEGIN Edit Project Details -->
+        <div class="project-details">
+          <div class="ui h3">Add Developers </div>
+          <form action ="/projects/add-a-dev" method="POST" class="ui form">
+            <input type="hidden" name="id" placeholder="Project ID" value="<%= project.id %>">
+
+            <%- include('../../components/select-developers',{selectedDevelopers: project.developers, notSelectedDevelopers: notSelectedDevelopers}) %>
+
+
+            <button class="ui green basic button submitter" type="submit">Add developer</button>
+          </form>
+
+          <% if(project.developers) { %>
+            <div class='ui h3 hed'> Remove Developers</div>
+
+            <div class='selected-dev-forms'>
+
+              <% project.developers.forEach( developer => { %>
+
+
+                  <form class="ui buttons selected-dev-form"action="/projects/remove-a-dev" method="POST">
+                    <input type="hidden" name="developer" value="<%=developer.id %>">
+                    <input type="hidden" name="id" value="<%=project.id %>">
+                    <button type="submit" class="ui button compact disabled" >
+                      <%=developer.fullName %>
+                    </button>
+                    <button type="submit" class="ui red compact button">
+                      Remove
+                    </button>
+                  </form>
+
+              <% }) %>
+
+            </div>
+          <% } %>
+        </div>
+      <!-- END Edit Project Details -->
+
+      <!-- end of content -->
+    </div>
+
+  </div>
+  <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

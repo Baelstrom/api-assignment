@@ -1,0 +1,23 @@
+<label class="form-manager">Assigned To</label>
+<div class="ui fluid search selection dropdown">
+  <% if (selectedDeveloper) { %>
+    <input type="hidden" name="assignedTo" value="<%= selectedDeveloper %>">
+  <% } else { %>
+      <input type="hidden" name="assignedTo">
+  <% } %>
+  <i class="dropdown icon"></i>
+  <div class="default text">Select whom you want to assign this task to</div>
+  <div class="menu">
+
+    <%# loop through managers add them to the selection list %>
+    <div class="item" data-value="<%=me.id %>"> Assign to Me </div>
+    <% if(developers) {
+         developers.forEach( developer => { %>
+           <% if (developer.id !== me.id) {%>
+              <div class="item" data-value="<%=developer.id %>"> <%=developer.fullName %></div>
+            <% } %>
+        <%  })
+     } %>
+
+  </div>
+</div>

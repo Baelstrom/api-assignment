@@ -1,0 +1,48 @@
+
+  <div class="my-container">
+    <div class="my-content">
+
+      <%- include('../../components/todaysDate'); %>
+
+      <div class="heading">
+        Developers
+      </div>
+
+        <div class="project-container">
+
+
+          <!-- BEGIN table for project employees -->
+          <table class="ui selectable sortable table">
+            <thead>
+              <tr>
+                <th>Developer</th>
+                <th>Hours</th>
+                <th>Overtime</th>
+                <th>Contribution</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(developers) { %>
+                  <%  developers.forEach( developer => { %>
+                    <tr>
+                      <td><%= developer.fullName%></td>
+                      <td>3</td>
+                      <td>2</td>
+                      <td>5</td>
+                      <td><a href="/developers/edit/<%= developer.id%>"><img src="/images/icons/icon-edit-grey.png" alt=""></a></td>
+                    </tr>
+                  <%  }) %>
+              <% } %>
+            </tbody>
+          </table>
+          <!-- END table for project emploeeys -->
+        </div>
+        <!-- END of project container -->
+
+      <!-- end of content -->
+    </div>
+
+  </div>
+
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

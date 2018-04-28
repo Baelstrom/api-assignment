@@ -28,6 +28,12 @@ module.exports = {
       example: 'Mocha Industries'
     },
 
+    description: {
+      type: 'string',
+      maxLength: 200,
+      example: 'build coffee dancing application'
+    },
+
     // The two attrbiutes commmented out :
     // Are not yet required because it's not asked for in the assignment itself.
     // Just more work if I feel like I can spare the time
@@ -47,7 +53,6 @@ module.exports = {
     status: {
       type: 'string',
       required: true,
-      unique: true,
       maxLength: 200,
       example: 'Avara'
     },
@@ -69,6 +74,10 @@ module.exports = {
     tasks: {
       collection: 'task',
       via: 'project'
+    },
+
+    managedBy: {
+      model: 'user',
     }
 
   },

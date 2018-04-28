@@ -1,0 +1,19 @@
+<div class="ui fluid search selection dropdown">
+  <input type="hidden" name="developer" required>
+  <i class="dropdown icon"></i>
+  <div class="default text">Select a Developer to add to this Project</div>
+  <div class="menu">
+
+    <%# loop through managers add them to the selection list %>
+    <% if(notSelectedDevelopers) { %>
+      <% notSelectedDevelopers.forEach( developer => { %>
+          <div class="item" data-value="<%=developer.id %>"> <%=developer.fullName %></div>
+      <% }) %>
+    <% } %>
+
+
+
+
+  </div>
+
+</div>
