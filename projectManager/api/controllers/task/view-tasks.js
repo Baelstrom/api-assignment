@@ -51,7 +51,6 @@ module.exports = {
 
     // Respond with view.
     return exits.success({
-      // tasks: tasksByStatus,
       tasks: tasks,
       developers: developers,
       projects: projects,

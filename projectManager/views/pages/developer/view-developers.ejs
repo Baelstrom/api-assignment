@@ -16,9 +16,8 @@
             <thead>
               <tr>
                 <th>Developer</th>
-                <th>Hours</th>
-                <th>Overtime</th>
-                <th>Contribution</th>
+                <th>Total Work Hours</th>
+                <th>Total Overtime Hours</th>
                 <th></th>
               </tr>
             </thead>
@@ -27,9 +26,8 @@
                   <%  developers.forEach( developer => { %>
                     <tr>
                       <td><%= developer.fullName%></td>
-                      <td>3</td>
-                      <td>2</td>
-                      <td>5</td>
+                      <td><%= developer.totalWorkHours%></td>
+                      <td><%= developer.totalOvertimeHours%></td>
                       <td><a href="/developers/edit/<%= developer.id%>"><img src="/images/icons/icon-edit-grey.png" alt=""></a></td>
                     </tr>
                   <%  }) %>

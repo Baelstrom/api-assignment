@@ -34,7 +34,7 @@ module.exports = {
     });
 
 
-    // get managers
+    // get projects
     let projects = await Project.find({
       status: { '!=' : ['Archived'] }
     })
